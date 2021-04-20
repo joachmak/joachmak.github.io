@@ -12,10 +12,11 @@ import { useState } from "react";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 interface ExperienceItemProps {
+    key:string;
     title:string;
     descriptionShort:string;
     descriptionExtended?:string;
-    datePeriod:[Date, Date | null];
+    datePeriod:[Date, Date | null | undefined];
     url?:string;
     skills:string[];
 }
@@ -63,12 +64,15 @@ export default function ExperienceItem(props:ExperienceItemProps) {
                         <div className={classes.AccordionSummary}>
                             <Typography variant={"h5"} className={classes.heading}>
                                 {
-                                    props.url ?
+                                    props.url && props.title ?
                                         <Link href={props.url} target={"_blank"}>{props.title}</Link> :
-                                        props.title
+                                        (props.title && props.title)
                                 }
                             </Typography>
-                            <Typography className={classes.secondaryHeading}>{props.datePeriod[0].toDateString()} - {props.datePeriod[1] ? props.datePeriod[1]?.toDateString() : "Now"}</Typography>
+                            {
+                                props.datePeriod && props.datePeriod[0] &&
+                                <Typography className={classes.secondaryHeading}>{props.datePeriod[0].toDateString()} - {props.datePeriod[1] ? props.datePeriod[1].toDateString() : "Now"}</Typography>
+                            }
                             <Typography className={classes.secondaryHeading}><i>{props.descriptionShort}</i></Typography>
                             <Typography className={classes.skills}>Skills acquired: {
                                 props.skills.map(skill =>

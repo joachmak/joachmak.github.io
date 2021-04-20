@@ -1,5 +1,5 @@
-import React from 'react';
 import './App.css';
+import './firebase'
 import About from "./about/About";
 import Experience from "./experience/Experience";
 import Education from "./education/Education";

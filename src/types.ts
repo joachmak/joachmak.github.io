@@ -1,12 +1,11 @@
 
-interface Experience {
-    title:string;
-    dateFrom:Date;
-    dateTo:Date | null;
-    descriptionShort:string;
-    descriptionLong:string;
-    skills:string[];
-    url?:string;
+type ExperienceDoc = {
+    title: string,
+    date: [Date, Date | null],
+    descriptionShort: string,
+    descriptionExtended: string,
+    skills: string[],
+    url?: string
 }
 
-export type { Experience }
+export type { ExperienceDoc }
