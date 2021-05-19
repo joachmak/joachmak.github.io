@@ -1,0 +1,3 @@
+[submodule "ll-bygg"]
+	path = ll-bygg
+	url = https://github.com/joachmak/ll-bygg
